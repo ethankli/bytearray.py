@@ -26,6 +26,13 @@ class Stream(object):
         """
         return self.get_length() - self._position
 
+    def clear(self):
+        """
+        Explicitly reset the stream to a freshly initialized state
+        """
+        self._data = list()
+        self._position = 0
+
     def read_boolean(self):
         value = struct.unpack(''.join([self._endian, '?']), self._data[self._position])
         self._position += 1
